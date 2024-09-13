@@ -1,0 +1,248 @@
+               <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>India Map - Art & Culture</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #f1efef, #f3f0ea);
+      margin: 0;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+
+    .map-container {
+      height: 100vh;
+    }
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #6E0000;
+      color: #FF3131;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .logo {
+      position: absolute;
+      top: 15px;
+      left: 10px;
+      height: 50px;
+      width: auto;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border: 2px solid #eae6df;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal-header {
+      font-weight: bold;
+    }
+
+    .modal-content {
+      margin: 20px 0;
+    }
+
+    .modal-close {
+      cursor: pointer;
+      color: #ff1744;
+      float: right;
+    }
+
+    .modal-close:hover {
+      color: #d32f2f;
+    }
+
+    .fact-content {
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .options-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .options-list li {
+      cursor: pointer;
+      color: #007bff;
+      margin: 5px 0;
+    }
+
+    .options-list li:hover {
+      text-decoration: underline;
+    }
+    .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #6E0000;
+  color: #FF3131;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 50px;
+  width: auto;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img class="logo" src="IMG_20240907_012911_272.png">
+    Bharat Srijan - Art & Culture Platform
+  </div>
+  <div class="header">
+  <img src="path/to/bharat-srijan-logo.png" alt="Bharat Srijan " class="logo">
+  Bharat Srijan - Art & Culture Platform
+</div>
+
+  <div id="map" class="map-container"></div>
+
+  <!-- Modal for showing options -->
+  <div id="modal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="modal-header">Options</div>
+    <div id="modalContent" class="modal-content"></div>
+  </div>
+
+  <!-- Modal for showing facts -->
+  <div id="factModal" class="modal">
+    <span class="modal-close" onclick="closeFactModal()">&times;</span>
+    <div class="modal-header">Fact</div>
+    <div id="factContent" class="modal-content"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Create the map
+    const map = L.map('map').setView([20.5937, 78.9629], 5); // Center on India
+
+    // Add a tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add state data (all states and UTs in India)
+  const states = {
+  KA: { name: 'Karnataka', center: [15.3173, 75.7139], options: ['Heritage', 'Culture'] },
+  MH: { name: 'Maharashtra', center: [19.6633, 75.3300], options: ['Heritage', 'Culture'] },
+  TN: { name: 'Tamil Nadu', center: [11.1271, 78.6569], options: ['Heritage', 'Culture'] },
+  RJ: { name: 'Rajasthan', center: [27.0238, 74.2179], options: ['Heritage', 'Culture'] },
+  UP: { name: 'Uttar Pradesh', center: [26.8467, 80.9462], options: ['Heritage', 'Culture'] },
+  PB: { name: 'Punjab', center: [30.9008, 75.8573], options: ['Heritage', 'Culture'] },
+  DL: { name: 'Delhi', center: [28.6139, 77.2090], options: ['Heritage', 'Culture'] },
+  HR: { name: 'Haryana', center: [29.0588, 76.0856], options: ['Heritage', 'Culture'] },
+  BR: { name: 'Bihar', center: [25.0961, 85.3131], options: ['Heritage', 'Culture'] },
+  MP: { name: 'Madhya Pradesh', center: [23.4734, 77.0948], options: ['Heritage', 'Culture'] },
+  JH: { name: 'Jharkhand', center: [23.6102, 85.2799], options: ['Heritage', 'Culture'] },
+  AS: { name: 'Assam', center: [26.2006, 92.9376], options: ['Heritage', 'Culture'] },
+  OR: { name: 'Odisha', center: [20.9517, 85.0985], options: ['Heritage', 'Culture'] },
+  CG: { name: 'Chhattisgarh', center: [21.2787, 81.8661], options: ['Heritage', 'Culture'] },
+  TR: { name: 'Tripura', center: [23.8136, 91.2866], options: ['Heritage', 'Culture'] },
+  MN: { name: 'Manipur', center: [24.6637, 93.0356], options: ['Heritage', 'Culture'] },
+  ME: { name: 'Meghalaya', center: [25.4670, 91.3662], options: ['Heritage', 'Culture'] },
+  SIKKIM: { name: 'Sikkim', center: [27.5330, 88.5122], options: ['Heritage', 'Culture'] },
+  AR: { name: 'Arunachal Pradesh', center: [27.0667, 91.5667], options: ['Heritage', 'Culture'] },
+  NA: { name: 'Nagaland', center: [26.1584, 94.5624], options: ['Heritage', 'Culture'] },
+  LD: { name: 'Lakshadweep', center: [10.5667, 72.6333], options: ['Heritage', 'Culture'] },
+  PY: { name: 'Puducherry', center: [11.9416, 79.8083], options: ['Heritage', 'Culture'] },
+  DNH: { name: 'Dadra and Nagar Haveli', center: [20.5167, 73.1333], options: ['Heritage', 'Culture'] },
+  DD: { name: 'Daman and Diu', center: [20.4167, 72.8333], options: ['Heritage', 'Culture'] },
+  LA: { name: 'Ladakh', center: [34.1526, 77.5774], options: ['Heritage', 'Culture'] },
+  JK: { name: 'Jammu and Kashmir', center: [33.7782, 76.5762], options: ['Heritage', 'Culture'] },
+  Kalyani: { name: 'Kalyani Town', center: [22.9664, 88.5622], options: ['Heritage', 'Culture'] },
+  Kolkata: { name: 'Kolkata', center: [22.5726, 88.3639], options: ['Heritage', 'Culture'] }
+};
+
+
+    // Function to add state markers
+    function addStateMarkers() {
+      for (const [key, value] of Object.entries(states)) {
+        L.marker(value.center).addTo(map)
+          .bindPopup(value.name)
+          .on('dblclick', function () {
+            showOptions(key);
+          });
+      }
+    }
+
+    addStateMarkers();
+
+    // Show options modal
+    function showOptions(stateCode) {
+      const state = states[stateCode];
+      if (state) {
+        const optionList = state.options.map(option => `<li onclick="generateFact('${stateCode}', '${option}')">${option}</li>`).join('');
+        document.getElementById('modalContent').innerHTML = `<ul class="options-list">${optionList}</ul>`;
+        document.getElementById('modal').style.display = 'block';
+      }
+    }
+
+    // Generate fact using Hugging Face API
+    async function generateFact(stateCode, option) {
+      const prompt = `Generate a unique factual KNOWLEDGE about ${option} in ${states[stateCode].name}.`;
+      try {
+        const response = await fetch('https://api-inference.huggingface.co/models/gpt2', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer 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',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ inputs: prompt })
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+
+        const data = await response.json();
+        const fact = data[0]?.generated_text || 'No fact available at the moment.';
+
+        document.getElementById('factContent').innerHTML = `<p>${fact}</p>`;
+        document.getElementById('factModal').style.display = 'block';
+      } catch (error) {
+        console.error('Error generating fact:', error);
+        document.getElementById('factContent').innerHTML = `<p>Failed to generate fact. Please try again later.</p>`;
+        document.getElementById('factModal').style.display = 'block';
+      }
+    }
+
+    // Close modals
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    function closeFactModal() {
+      document.getElementById('factModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
