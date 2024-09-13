@@ -29,6 +29,10 @@ Table of Contents
 <p><h4>AI Model:GPT-2 via Hugging Face API</h4></p>
 <p><h4>AI Model:Deployment: GitHub, Hugging Face Model API</h4></p>
 
+![screenshot-1726250899342](https://github.com/user-attachments/assets/768bebdc-6e1a-45d2-9023-73c1868a95e6)
+![screenshot-1726250975602](https://github.com/user-attachments/assets/b5702cc2-8807-4a07-83a2-b2f48a3d57ef)
+![screenshot-1726250869990](https://github.com/user-attachments/assets/4c52988b-96bf-499b-b2b6-925890135888)
+
 <h2><b>Usage</b><h2/>
 
 <p><h4>1.Open the web interface<h4/><p/>
