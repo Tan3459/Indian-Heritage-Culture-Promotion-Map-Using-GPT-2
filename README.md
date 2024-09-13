@@ -9,22 +9,29 @@ Table of Contents
   - Future Enhancements
   - Contributing
 
-Overview
+<h2>Overview<h2/>
 
-India is a land of rich culture and diverse heritage. This project aims to visualize and promote this heritage using an interactive map of India. With the help of GPT-2 and Hugging Face API, the map generates detailed descriptions, historical information, and cultural insights about various regions of India.
+<h4>India is a land of rich culture and diverse heritage. This project aims to visualize and promote this heritage using an interactive map of India. With the help of GPT-2 and Hugging Face API, the map generates detailed descriptions, historical information, and cultural insights about various regions of India.<h4/>
 
-The project can be helpful for educational purposes, tourism, and cultural awareness campaigns.
+<h4>The project can be helpful for educational purposes, tourism, and cultural awareness campaigns.<h4/>
 
-Features
+<h2><b>Features</b><h2/>
 
--Interactive Map: An interactive map of India where users can click on different states/regions.
--Cultural Descriptions: GPT-2 is used to generate detailed cultural descriptions for different regions, covering topics like history, architecture, cuisine, languages, and festivals.
--Customizable API: Uses Hugging Face's API for text generation, allowing the project to be easily extended to include more content and languages.
--Scalable Model: The system can scale with more powerful models like GPT-3 or even custom fine-tuned models for Indian heritage.
+<p><h4>Interactive Map: An interactive map of India where users can click on different states/regions.<h4/><p/>
+<p><h4>Cultural Descriptions: GPT-2 is used to generate detailed cultural descriptions for different regions, covering topics like history, architecture, cuisine, languages, and festivals.<h4/><p/>
+<p><h4>Customizable API: Uses Hugging Face's API for text generation, allowing the project to be easily extended to include more content and languages.</h4></p>
+<p><h4>Scalable Model: The system can scale with more powerful models like GPT-3 or even custom fine-tuned models for Indian heritage.</h4></p>
 
-Technology Stack
+<h2><b>Technology Stack</b><h2/>
 
--Frontend: HTML, CSS, JavaScript (for displaying and interacting with the map)
--Backend: Python, Flask/Django (for API interaction and text generation)
--AI Model: GPT-2 via Hugging Face API
--Deployment: GitHub, Hugging Face Model API
+<p><h4>Interactive Map:Frontend: HTML, CSS, JavaScript (for displaying and interacting with the map)<h4/><p/>
+<p><h4>Backend:Python, Flask/Django (for API interaction and text generation)<h4/><p/>
+<p><h4>AI Model:GPT-2 via Hugging Face API</h4></p>
+<p><h4>AI Model:Deployment: GitHub, Hugging Face Model API</h4></p>
+
+<h2><b>Usage</b><h2/>
+
+<p><h4>1.Open the web interface<h4/><p/>
+<p><h4>2.Click on different regions of the map to generate information about the culture, heritage, and historical importance of the selected region.<h4/><p/>
+<p><h4>3.Text descriptions will be generated using GPT-2 via Hugging Face API.</h4></p>
+
