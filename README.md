@@ -2,14 +2,13 @@
 This project uses a custom-built Indian map to promote Indian heritage and culture. The project leverages GPT-2, a transformer-based language model, along with Hugging Face's API for generating descriptive text about different regions in India.
 
 Table of Contents
-Overview
-Features
-Technology Stack
-Installation
-Usage
-Future Enhancements
-Contributing
-License
+  - Overview
+  - Features
+  - Technology Stack
+  - Usage
+  - Future Enhancements
+  - Contributing
+
 Overview
 India is a land of rich culture and diverse heritage. This project aims to visualize and promote this heritage using an interactive map of India. With the help of GPT-2 and Hugging Face API, the map generates detailed descriptions, historical information, and cultural insights about various regions of India.
 
